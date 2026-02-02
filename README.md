@@ -249,7 +249,7 @@ ftp> quit
 ./proxy 21
 
 # Terminal 2 : Client
-ftp 127.0.0.1 [port_affiché]
+ftp-ssl -z nossl -d 127.0.0.1 [port_affiché]
 
 Name: monlogin@ftp.monserveur.com
 Password: monmotdepasse
