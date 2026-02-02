@@ -126,10 +126,10 @@ Le port d'ecoute est: 45678
 
 Une fois le proxy lancé, connectez-vous avec votre client FTP favori :
 
-#### Avec `ftp` en ligne de commande :
+#### Avec `ftp` + ses options en ligne de commande :
 
 ```bash
-ftp 127.0.0.1 45678
+ftp-ssl -z nossl -d 127.0.0.1 55415
 ```
 
 Remplacez `45678` par le port affiché par le proxy.
@@ -229,7 +229,7 @@ Le proxy transforme automatiquement les connexions actives en passives :
 # Le port d'ecoute est: 34567
 
 # Terminal 2 : Se connecter avec ftp
-ftp 127.0.0.1 34567
+ftp-ssl -z nossl -d 127.0.0.1 55415
 
 # Connexion :
 Name: anonymous@ftp.fr.debian.org
@@ -277,71 +277,8 @@ Le proxy affiche des logs détaillés pour le débogage :
 (PROXY) Réponse PASV du serveur: 227 Entering Passive Mode (...)
 (PROXY) Transfert de données entre serveur et client
 (PROXY) Transfert terminé
-```
 
----
-
-## 🔍 Dépannage
-
-### Le proxy ne démarre pas
-
-**Erreur** : `Erreur création socket RDV`
-
-**Solution** : Vérifiez que vous avez les permissions nécessaires. Essayez avec `sudo` si nécessaire.
-
----
-
-### Impossible de se connecter au serveur FTP
-
-**Erreur** : `Erreur: impossible de se connecter au serveur.`
-
-**Causes possibles** :
-- Le serveur FTP est hors ligne
-- Le port est incorrect (utilisez `21` pour FTP standard)
-- Problème de réseau ou pare-feu
-
-**Solution** : Vérifiez la disponibilité du serveur avec `ping` ou `telnet` :
-
-```bash
-telnet ftp.fr.debian.org 21
-```
-
----
-
-### Erreur de connexion données
-
-**Erreur** : `Erreur connexion données client` ou `Erreur connexion données serveur`
-
-**Solution** : 
-- Vérifiez que votre pare-feu autorise les connexions sur les ports dynamiques
-- Assurez-vous que le client FTP utilise bien le mode PORT (pas PASV directement)
-
----
-
-### Le transfert de fichiers échoue
-
-**Symptôme** : La commande `LIST` ou `RETR` se bloque
-
-**Solution** :
-- Vérifiez les logs du proxy pour identifier où le blocage se produit
-- Assurez-vous que les sockets de données sont bien fermées après chaque transfert
-- Redémarrez le proxy et le client
-
----
-
-### Plusieurs clients ne peuvent pas se connecter
-
-**Symptôme** : Seul le premier client fonctionne
-
-**Cause** : Problème avec `fork()` ou gestion des processus
-
-**Solution** :
-- Vérifiez que `fork()` fonctionne correctement sur votre système
-- Augmentez `LISTENLEN` si nécessaire
-- Vérifiez qu'il n'y a pas de processus zombies avec `ps aux | grep proxy`
-
----
-
+````
 ## 📝 Structure du code
 
 ```
@@ -350,7 +287,6 @@ proxy-ftp/
 ├── proxy.c              # Code source principal
 ├── simpleSocketAPI.h    # Bibliothèque de gestion des sockets
 ├── README.md            # Ce fichier
-└── LICENSE              # Licence du projet (à ajouter)
 ```
 
 ---
@@ -376,18 +312,6 @@ proxy-ftp/
 
 ---
 
-## 🤝 Contribution
-
-Les contributions sont les bienvenues ! Si vous souhaitez améliorer ce projet :
-
-1. Forkez le dépôt
-2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/amelioration`)
-3. Committez vos changements (`git commit -m 'Ajout d'une fonctionnalité'`)
-4. Pushez vers la branche (`git push origin feature/amelioration`)
-5. Ouvrez une Pull Request
-
----
-
 ## 📄 Licence
 
 Ce projet est développé dans le cadre d'un projet universitaire (R3.05 - Groupe B).
@@ -398,10 +322,8 @@ Ce projet est développé dans le cadre d'un projet universitaire (R3.05 - Group
 
 Pour toute question ou suggestion :
 
-- **Emmy OUMERRETANE**
-- **Phuong NGUYEN**
-- **Iris CORBILLE**
+- **Emmy OUMERRETANE**    https://github.com/emmyo-git
+- **Phuong NGUYEN**       https://github.com/phoocore
+- **Iris CORBILLE**       https://github.com/iriscrbl
 
 ---
-
-**Bon courage avec votre proxy FTP ! 🚀**
