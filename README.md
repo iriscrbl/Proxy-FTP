@@ -14,16 +14,16 @@ Un serveur proxy FTP développé en C qui permet de relayer les connexions FTP e
 
 ## Table des matières
 
-- [Description](##-description)
-- [Fonctionnalités](##-fonctionnalités)
-- [Prérequis](##-prérequis)
-- [Installation](##-installation)
-- [Utilisation](##-utilisation)
-- [Architecture technique](##-architecture-technique)
-- [Exemples d'utilisation](##-exemples-dutilisation)
-- [Ressources](##-ressources)
-- [Licence](##-licence)
-- [Contact](#-contact)
+- [Description](#description)
+- [Fonctionnalités](#fonctionnalités)
+- [Prérequis](#prérequis)
+- [Installation](#installation)
+- [Utilisation](#utilisation)
+- [Architecture technique](#architecture-technique)
+- [Exemples d'utilisation](#exemples-dutilisation)
+- [Ressources](#ressources)
+- [Licence](#licence)
+- [Contact](#contact)
 
 ---
 
