@@ -1,8 +1,8 @@
-# 🌐 Proxy FTP
+# Proxy FTP
 
 Un serveur proxy FTP développé en C qui permet de relayer les connexions FTP entre des clients et des serveurs FTP distants, avec gestion du mode actif et passif.
 
-## 👥 Équipe
+## Équipe
 
 - **OUMERRETANE Emmy**
 - **NGUYEN Phuong**
@@ -12,7 +12,7 @@ Un serveur proxy FTP développé en C qui permet de relayer les connexions FTP e
 
 ---
 
-## 📋 Table des matières
+## Table des matières
 
 - [Description](#-description)
 - [Fonctionnalités](#-fonctionnalités)
@@ -21,12 +21,13 @@ Un serveur proxy FTP développé en C qui permet de relayer les connexions FTP e
 - [Utilisation](#-utilisation)
 - [Architecture technique](#-architecture-technique)
 - [Exemples d'utilisation](#-exemples-dutilisation)
-- [Dépannage](#-dépannage)
+- [Ressources](#-ressources)
 - [Licence](#-licence)
+- [Contact](#-contact)
 
 ---
 
-## 📖 Description
+## Description
 
 Ce proxy FTP agit comme intermédiaire entre un client FTP et un serveur FTP distant. Il intercepte les commandes du client, les traite et les transmet au serveur approprié. Le proxy gère automatiquement la conversion des connexions de données du mode **actif (PORT)** vers le mode **passif (PASV)**.
 
@@ -39,13 +40,13 @@ Ce proxy FTP agit comme intermédiaire entre un client FTP et un serveur FTP dis
 
 ---
 
-## ✨ Fonctionnalités
+## Fonctionnalités
 
-- ✅ **Connexion de contrôle** : Établissement de la connexion client ↔ proxy ↔ serveur
-- ✅ **Authentification** : Parsing de la commande `USER login@serveur.ftp.com`
-- ✅ **Mode actif vers passif** : Conversion automatique `PORT` → `PASV`
-- ✅ **Transfert de données** : Relais transparent des données entre client et serveur
-- ✅ **Commandes supportées** :
+- **Connexion de contrôle** : Établissement de la connexion client ↔ proxy ↔ serveur
+- **Authentification** : Parsing de la commande `USER login@serveur.ftp.com`
+- **Mode actif vers passif** : Conversion automatique `PORT` → `PASV`
+- **Transfert de données** : Relais transparent des données entre client et serveur
+- **Commandes supportées** :
   - `USER` (avec syntaxe `login@serveur`)
   - `PASS`
   - `LIST`
@@ -53,11 +54,11 @@ Ce proxy FTP agit comme intermédiaire entre un client FTP et un serveur FTP dis
   - `STOR`
   - `QUIT`
   - Et toutes les autres commandes FTP standards
-- ✅ **Multi-clients** : Gestion de plusieurs connexions simultanées via `fork()`
+- **Multi-clients** : Gestion de plusieurs connexions simultanées via `fork()`
 
 ---
 
-## 🔧 Prérequis
+## Prérequis
 
 - **Système d'exploitation** : Linux (Ubuntu, Debian, etc.)
 - **Compilateur** : GCC
@@ -73,7 +74,7 @@ Ce proxy FTP agit comme intermédiaire entre un client FTP et un serveur FTP dis
 
 ---
 
-## 📥 Installation
+## Installation
 
 ### 1. Cloner le dépôt
 
@@ -96,7 +97,7 @@ Si vous avez des avertissements, vous pouvez les ignorer ou les corriger selon v
 
 ---
 
-## 🚀 Utilisation
+## Utilisation
 
 ### Lancer le proxy
 
@@ -129,7 +130,7 @@ Une fois le proxy lancé, connectez-vous avec votre client FTP favori :
 #### Avec `ftp` + ses options en ligne de commande :
 
 ```bash
-ftp-ssl -z nossl -d 127.0.0.1 55415
+ftp-ssl -z nossl -d 127.0.0.1 45678
 ```
 
 Remplacez `45678` par le port affiché par le proxy.
@@ -156,7 +157,7 @@ Le proxy va :
 
 ---
 
-## 🏗️ Architecture technique
+## Architecture-technique
 
 ### Schéma de fonctionnement
 
@@ -216,7 +217,7 @@ Le proxy transforme automatiquement les connexions actives en passives :
 
 ---
 
-## 💡 Exemples d'utilisation
+## Exemples d'utilisation
 
 ### Exemple 1 : Connexion au serveur Debian
 
@@ -279,7 +280,7 @@ Le proxy affiche des logs détaillés pour le débogage :
 (PROXY) Transfert terminé
 
 ````
-## 📝 Structure du code
+## Structure du code
 
 ```
 proxy-ftp/
@@ -288,23 +289,9 @@ proxy-ftp/
 ├── simpleSocketAPI.h    # Bibliothèque de gestion des sockets
 ├── README.md            # Ce fichier
 ```
-
 ---
 
-## 🔒 Sécurité
-
-⚠️ **Avertissement** : Ce proxy est développé à des fins éducatives. Pour un usage en production, considérez :
-
-- Ajouter une authentification au niveau du proxy
-- Implémenter le chiffrement (FTPS/SFTP)
-- Limiter les commandes autorisées
-- Ajouter des logs d'audit
-- Gérer les timeout de connexion
-- Valider toutes les entrées utilisateur
-
----
-
-## 📚 Ressources
+## Ressources
 
 - [RFC 959 - FTP Protocol](https://www.rfc-editor.org/rfc/rfc959)
 - [Guide sur les sockets en C](https://beej.us/guide/bgnet/)
@@ -312,13 +299,13 @@ proxy-ftp/
 
 ---
 
-## 📄 Licence
+## Licence
 
-Ce projet est développé dans le cadre d'un projet universitaire (R3.05 - Groupe B).
+Ce projet est développé dans le cadre d'un projet universitaire (R3.05 - Programmation Système).
 
 ---
 
-## 📧 Contact
+## Contact
 
 Pour toute question ou suggestion :
 
